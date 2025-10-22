@@ -34,9 +34,6 @@
 
     • Fungsi onTap harus menggunakan Navigator.push() untuk ke ScanScreen.
 
-    • Hasil:
-![Screenshot ocr_sederhana](images/1.1.png)
-
 2. Teks Utuh dan Navigasi Balik:
     
     • Di ResultScreen (lib/screens/result_screen.dart), hapus fungsi ocrText.replaceAllagar hasil teks ditampilkan dengan baris baru (\n) yang utuh.
@@ -45,12 +42,14 @@
     
     • Ketika tombol ditekan, navigasi harus kembali langsung ke HomeScreen menggunakan **Navigator.pushAndRemoveUntil()** (atau metode yang setara) untuk menghapus semua halaman di atasnya dari stack navigasi.
 
-    • Hasil:
-    1. scan
+3. Hasil
+    - Home:
+![Screenshot ocr_sederhana](images/1.1.png)
+    - Scan:
 ![Screenshot ocr_sederhana](images/1.2.1.png)
-    2. hasil
+    - Hasil:
 ![Screenshot ocr_sederhana](images/1.2.2.png)
-    3. menekan tombol home
+    - Menekan tombol home:
 ![Screenshot ocr_sederhana](images/1.1.png)
 
 ## Soal 2: Penyesuaian Tampilan dan Penanganan State/Error
@@ -69,3 +68,28 @@
 
 3. Hasil:
 ![Screenshot ocr_sederhana](images/2.png)
+
+## Soal 3: Implementasi Plugin Text-to-Speech (TTS)
+
+- Tujuan: Mengintegrasikan fitur membaca teks secara lisan menggunakan *plugin* flutter_tts.
+
+1. Instalasi Plugin (5 Poin):
+    • Tambahkan *plugin* flutter_tts ke dalam file pubspec.yaml (gunakan versi terbaru yang kompatibel).
+    • Jalankan flutter pub get.
+
+2. Konversi Widget dan Inisialisasi (10 Poin):
+    • Ubah ResultScreen dari StatelessWidget menjadi **StatefulWidget**.
+    • Di initState(), inisialisasi FlutterTts dan atur bahasa pembacaan menjadi Bahasa Indonesia.
+    • Implementasikan dispose() untuk menghentikan mesin TTS saat halaman ditutup.
+
+3. Fungsionalitas Pembacaan (15 Poin):
+    • Tambahkan FloatingActionButton kedua di ResultScreen (atau ganti AppBar dengan action button) dengan ikon Icons.volume_up.
+    • Ketika tombol ditekan, panggil fungsi speak() pada FlutterTts untuk membacakan seluruh isi ocrText.
+
+4. Hasil:
+    - plugin:
+![Screenshot ocr_sederhana](images/3.1.png)
+    - Scan:
+![Screenshot ocr_sederhana](images/3.2.1.png)
+    - Hasil (text-to-speach kanan atas):
+![Screenshot ocr_sederhana](images/3.2.2.png)
